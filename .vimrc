@@ -92,7 +92,7 @@ colorscheme zenburn
 set incsearch " show matches for patterns while they are being typed
 set hlsearch " highlight all matches for searched pattern
 """" clear highlight with <esc> after a search
-nnoremap <C-h> :noh<return>
+nnoremap <C-o> :noh<return>
 
 " increase the PEP8 max characters
 set cc=90
