@@ -133,32 +133,3 @@ set -o vi
 # set capslock to escape key  
 xcape -e '#66=Escape'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/mattb/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/mattb/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/mattb/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/mattb/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# path for ITKSnap
-export PATH="/usr/local/itksnap-3.8.0-20190612-Linux-gcc64/bin:$PATH"
-
-# fsl paths
-FSLDIR=/usr/local/fsl
-. ${FSLDIR}/etc/fslconf/fsl.sh
-PATH=${FSLDIR}/bin:${PATH}
-export FSLDIR PATH
-
-export ANTSPATH=/usr/local/ANTs/bin/
-export PATH=${ANTSPATH}:$PATH
-export PATH=${HOME}/tools/vim/bin:$PATH
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
