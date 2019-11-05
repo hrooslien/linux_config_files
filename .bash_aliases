@@ -8,6 +8,11 @@ alias ll='ls -lF'
 
 alias untar='tar zxvf'
 
+
+# git
+alias gitstat='git stauts'
+
+# conenctions
 alias vpn='/opt/cisco/anyconnect/bin/vpn'
 alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
 alias sshgla='ssh -X gpuws4-pc.psy.gla.ac.uk'
