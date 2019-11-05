@@ -43,6 +43,16 @@ set relativenumber
 set encoding=utf-8
 syntax enable " highlight special words to aid readability
 
+:autocmd InsertEnter * set cul " highlight line when in insert mode
+:autocmd InsertLeave * set nocul " turn off above when leaving insert mode
+let &t_SI = "\e[5 q" " cursor blining bar on insert mode
+let &t_EI = "\e[2 q" " cursor steady block on command mode
+" optional reset cursor on start:
+augroup myCmds
+	au!
+	autocmd VimEnter * silent !echo -ne "\e[2 q"
+	augroup END
+
 " With both on, searches with no capitals are case insensitive, while searches with a capital characters are case sensitive.
 set smartcase
 set ignorecase

@@ -8,9 +8,8 @@ alias ll='ls -lF'
 
 alias untar='tar zxvf'
 
-
 # git
-alias gitstat='git stauts'
+alias gitstat='git status'
 
 # conenctions
 alias vpn='/opt/cisco/anyconnect/bin/vpn'
