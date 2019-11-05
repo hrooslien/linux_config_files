@@ -122,17 +122,18 @@ fi
 
 ## MATT GETS A PC ##
 
-# Launch tmux
-if command -v tmux>/dev/null; then
-	 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux new-session -A -s main
-fi
-
 # use vi shortcuts in terminal
 set -o vi
 # make vim my default editor
 export VISUAL=vim
 export EDITOR=$VISUAL
+TERM=xterm-256color  	# I need this to happen before tmux launches 
+			# - it allows the cursor to reflect vi(m) mode
 
 # set capslock to escape key  
 xcape -e '#66=Escape'
 
+# Launch tmux
+if command -v tmux>/dev/null; then
+	 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux new-session -A -s main
+fi
