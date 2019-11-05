@@ -129,6 +129,9 @@ fi
 
 # use vi shortcuts in terminal
 set -o vi
+# make vim my default editor
+export VISUAL=vim
+export EDITOR=$VISUAL
 
 # set capslock to escape key  
 xcape -e '#66=Escape'
