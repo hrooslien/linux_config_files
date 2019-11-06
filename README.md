@@ -9,5 +9,5 @@ To make this work, you need to:
 ln -s ~/linux_config_files/.inputrc .inputrc\
 ln -s ~/linux_config_files/.tmux.conf .tmux.conf\
 ln -s ~/linux_config_files/.vimrc .vimrc\
-ln -s ~/linux_config_files/multihost_bashrc/base_bashrc .bashrc\
+ln -s ~/linux_config_files/multihost_bashrc/base_bashrc .bashrc
 
