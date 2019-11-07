@@ -1,15 +1,15 @@
 alias sd='shutdown -h now'
 
-# display the ufc video I amwatching/should watch next
-alias ufc='path="/mnt/twotera/Matt/_Video/UFC/"; \
-	current_vid="$(ls ${path} | grep -vi watched | grep -vi cancelled | head -n1)" \
+# display the ufc video I am watching/should watch next
+alias ufc='path="/home/mattb/video/UFC/"; \
+	current_vid="$(ls ${path} | grep -vi watched | grep -vi cancelled | head -n1)"; \
 	echo "${current_vid}"'
 
 # play the vide found above in fullscreen mode
 alias ufcp='vlc -f "${path}${current_vid}"'
 
 # add '_Watched' at the end of the file name
-alias ufcr='echo "${path}${current_vid} ${path}${current_vid::-4}_Watched${current_vid: -4}"'
+alias ufcr='mv "${path}${current_vid} ${path}${current_vid::-4}_Watched${current_vid: -4}"'
 
 # launch utorrent server
 alias ut='utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &'
