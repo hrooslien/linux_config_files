@@ -1,3 +1,5 @@
+alias cl='clear'
+
 # move up 1,2 or 3 directories 
 alias ..='cd ../'
 alias ...='cd ../../'
