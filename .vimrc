@@ -41,6 +41,9 @@ filetype plugin indent on    " required
 set number
 set relativenumber
 set encoding=utf-8
+
+set linebreak " wrap long lines at a character in 'breakat' (default " ^I!@*-+;:,./?") rather than at the last character that fits on the screen.
+
 syntax enable " highlight special words to aid readability
 
 :autocmd InsertEnter * set cul " highlight line when in insert mode
