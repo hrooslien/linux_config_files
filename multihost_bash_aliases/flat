@@ -7,7 +7,7 @@ alias ufc='path="/home/mattb/video/UFC/"; \
 	current_vid="$(ls ${path} | grep -vi watched | grep -vi cancelled | head -n1)"; \
 	echo "${current_vid}"'
 
-# play the vide found above in fullscreen mode
+# play the vid found above in fullscreen mode
 alias ufcp='ufc; vlc -f "${path}${current_vid} &"'
 
 # add '_Watched' at the end of the file name
