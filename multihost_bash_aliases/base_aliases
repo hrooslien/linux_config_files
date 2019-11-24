@@ -6,8 +6,8 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 
 # don't show hidden files by default in long list 
-alias l='ls -lF'
-alias ll='ls -alF'
+alias l='ls -lhF'
+alias ll='ls -alhF'
 
 alias untar='tar zxvf'
 
