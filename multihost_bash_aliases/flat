@@ -1,4 +1,4 @@
-alias sd='shutdown -h now'
+alias sd='shutdown'
 
 alias skype='skype &'
 
@@ -15,3 +15,5 @@ alias ufcr='mv ${path}${current_vid} ${path}${current_vid::-4}_Watched${current_
 
 # launch utorrent server
 alias ut='utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &'
+
+alias nerd='evince ~/downloads/UNIX*.pdf &'

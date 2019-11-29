@@ -6,8 +6,8 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 
 # don't show hidden files by default in long list 
-alias l='ls -lF'
-alias ll='ls -alF'
+alias l='ls -lhF'
+alias ll='ls -alhF'
 
 alias untar='tar zxvf'
 
@@ -18,6 +18,10 @@ alias gitstat='git status'
 alias spyder='spyder &'
 alias itksnap='itksnap &'
 alias matlab='matlab &'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 35f634ba0f2893133a9582b030b178d6f636082a
 # alias chrome='google-chrome &'
 # in case I start getting errors popping up in the terminal, 
 # automatically open a new tmux window:
@@ -29,12 +33,6 @@ alias chrome='google-chrome & tmux new-window'
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'
-	#alias dir='dir --color=auto' 
-	#alias vdir='vdir --color=auto'   
-	
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto' 
 fi	
 
 # Add an "alert" alias for long running commands.  Use like so:
