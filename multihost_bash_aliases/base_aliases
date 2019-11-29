@@ -17,6 +17,8 @@ alias gitstat='git status'
 # open applications with & to allow me to continue working in the terminal
 alias spyder='spyder &'
 alias itksnap='itksnap &'
+alias matlab='matlab &'
+
 # alias chrome='google-chrome &'
 # in case I start getting errors popping up in the terminal, 
 # automatically open a new tmux window:
