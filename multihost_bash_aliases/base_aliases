@@ -23,6 +23,8 @@ alias matlab='matlab &'
 # automatically open a new tmux window:
 alias chrome='google-chrome & tmux new-window'
 
+# mkdir and cd into it
+alias mkdircd='mkdir {$1} && cd {$1}'
 
 # grabbed these from the .bashrc
 # enable color support of ls and also add handy aliases
