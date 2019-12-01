@@ -1,9 +1,9 @@
 alias sd='shutdown'
 
-alias skype='skype &'
+alias skype='skypeforlinux &'
 
 # display the ufc video I am watching/should watch next
-alias ufc='path="/home/mattb/video/UFC/"; \
+alias ufc='path="/home/mattb/Videos/ufc/"; \
 	current_vid="$(ls ${path} | grep -vi watched | grep -vi cancelled | head -n1)"; \
 	echo "${current_vid}"'
 
@@ -16,4 +16,4 @@ alias ufcr='mv ${path}${current_vid} ${path}${current_vid::-4}_Watched${current_
 # launch utorrent server
 alias ut='utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &'
 
-alias nerd='evince ~/downloads/UNIX*.pdf &'
+alias nerd='evince ~/Documents/UNIX*.pdf &'
