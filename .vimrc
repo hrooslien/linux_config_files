@@ -37,7 +37,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-" some things people say are generally good
+" some things I've collected from online
 set number
 set relativenumber
 set encoding=utf-8
@@ -94,6 +94,12 @@ endif
 " add blank lines without entering insert mode
 nnoremap o o<Esc>
 nnoremap O O<Esc>
+
+" copy/paste-on-select (*) and copy/paste-with crtl+C (+) remap to \y \p and \Y \P
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 
 " Theme options
 set t_Co=256
@@ -156,16 +162,21 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " IGNORANT nmap <F8> :TagbarToggle<CR>
 
+" general scripting
+\ set tabstop=4
+\ set softtabstop=4
+\ set shiftwidth=4
+" \ set textwidth=79
+\ set expandtab " expand tabs into spaces
+\ set autoindent
+\ set showmatch " show the matching part of the pair for [] {} and ()
+
+" matlab specific
+"
+" pyhon specific
 " add PEP8 indentation
 au BufNewFile,BufRead *.py " apparently this will only apply to .py files
-	\ set tabstop=4
-	\ set softtabstop=4
-	\ set shiftwidth=4
-	" \ set textwidth=79
-	\ set expandtab " expand tabs into spaces
-	\ set autoindent
 	\ set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
-	\ set showmatch " show the matching part of the pair for [] {} and ()
 	\ let python_highlight_all = 1 " enable all Python syntax highlighting features
 
 

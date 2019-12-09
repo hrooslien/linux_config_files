@@ -1,3 +1,17 @@
+# grabbed these from the .bashrc
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+fi	
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert   
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+### my own aliases ###
+
 alias cl='clear'
 
 # move up 1,2 or 3 directories 
@@ -23,18 +37,8 @@ alias matlab='matlab &'
 # automatically open a new tmux window:
 alias chrome='google-chrome & tmux new-window'
 
-# mkdir and cd into it
+# mkdir and cd into it (doesn't work yet...)
 alias mkdircd='mkdir {$1} && cd {$1}'
 
-# grabbed these from the .bashrc
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-fi	
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert   
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
+# access to contents of system clipboard (commands I plan on using start with this form)
+alias clip='xclip -selection clipboard'
