@@ -44,3 +44,6 @@ alias mkdircd='mkdir {$1} && cd {$1}'
 
 # access to contents of system clipboard (commands I plan on using start with this form)
 alias clip='xclip -selection clipboard'
+
+# set night light temp (default=4000)
+alias night='gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'

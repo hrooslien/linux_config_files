@@ -19,5 +19,3 @@ alias ut='utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &'
 # read book
 alias nerd='evince ~/Documents/UNIX*.pdf &'
 
-# set night light temp (default=4000)
-alias night='gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'
