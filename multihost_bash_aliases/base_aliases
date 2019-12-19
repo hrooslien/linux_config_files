@@ -21,7 +21,9 @@ alias ....='cd ../../../'
 
 # don't show hidden files by default in long list 
 alias l='ls -lhF'
+alias lt="(tput rmam; ls -lhF; tput smam)"
 alias ll='ls -alhF'
+alias llt="(tput rmam; ls -alhF; tput smam)"
 
 alias untar='tar zxvf'
 
