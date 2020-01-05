@@ -3,4 +3,4 @@ alias sd='shutdown'
 alias skype='skypeforlinux &'
 
 # launch utorrent server
-alias ut='utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &'
+alias ut='utserver -settingspath /usr/local/utorrent-server-alpha-v3_3/ &'
