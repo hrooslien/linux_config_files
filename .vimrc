@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'jnurmine/Zenburn'
 Plugin 'flazz/vim-colorschemes'
-" IGNORANT Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-scripts/indentpython.vim'
 Plugin 'python-rope/ropevim'
 Plugin 'davidhalter/jedi-vim'
 " IGNORANT Plugin 'SirVer/ultisnips'
