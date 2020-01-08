@@ -108,6 +108,7 @@ TERM=xterm-256color  	# I need this to happen before tmux launches
 			# - it allows the cursor to reflect vi(m) mode
 
 # set capslock to escape key  
+setxkbmap -option ‘caps:ctrl_modifier’
 xcape -e '#66=Escape'
 
 # Launch tmux
