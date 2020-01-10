@@ -36,6 +36,7 @@ alias spyder='spyder &'
 alias itksnap='itksnap &'
 alias matlab='matlab &'
 alias matlabnd='/usr/local/MATLAB/R2019b/bin/matlab -nodesktop -nosplash'
+alias vmatlabnd='rlwrap -a matlab -nodesktop -nosplash'
 #
 # alias chrome='google-chrome &'
 # in case I start getting errors popping up in the terminal, 
