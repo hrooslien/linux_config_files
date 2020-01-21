@@ -18,6 +18,10 @@ Plugin 'python-rope/ropevim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-scripts/MatlabFilesEdition'
+
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
 " IGNORANT Plugin 'SirVer/ultisnips'
 " IGNORANT Plugin 'honza/vim-snippets'
 " IGNORANT Plugin 'tpope/vim-fugitive'
@@ -37,7 +41,6 @@ Plugin 'tpope/vim-repeat'
 "" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 " some things I've collected from online
 set number
@@ -97,6 +100,15 @@ set splitright
 	map <C-l> <C-w>l
 " endif
 
+
+" Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " vim remaps
 " add blank lines without entering insert mode
 nnoremap o o<Esc>
@@ -107,7 +119,6 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
-
 " Theme options
 set t_Co=256
 " set background=dark

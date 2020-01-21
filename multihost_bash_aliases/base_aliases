@@ -43,11 +43,19 @@ alias vmatlabnd='rlwrap -a matlab -nodesktop -nosplash'
 # automatically open a new tmux window:
 alias chrome='google-chrome & tmux new-window'
 
-# mkdir and cd into it (doesn't work yet...)
-alias mkdircd='mkdir {$1} && cd {$1}'
-
 # access to contents of system clipboard (commands I plan on using start with this form)
 alias clip='xclip -selection clipboard'
 
 # set night light temp (default=4000)
 alias night='gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'
+
+# cat but just cut at edge of tmux pane
+catc () {
+width=$(tmux display-message -p '#{pane_width}')
+cat todo_master.md | cut -c -$(($width-3))
+}
+
+# mkdir and cd into it
+mkcddir () {
+mkdir -p $1 && cd $1
+}
