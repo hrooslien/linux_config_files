@@ -1,4 +1,4 @@
-# linux_config_files
+## linux_config_files
 
 This was inspired by a blog post (see pdf in this repo)
 
@@ -12,3 +12,6 @@ ln -s ~/linux_config_files/.tmux.conf .tmux.conf
 ln -s ~/linux_config_files/.vimrc .vimrc
 ln -s ~/linux_config_files/multihost_bashrc/base_bashrc .bashrc
 ```
+
+### Ultisnips
+I use Ultisnips in my .vimrc, which stores the snippets in ~/.vim/Ultisnips. In order to keep my .snippets files synched across machines, I move new files created in .vim/Ultisnips/ to linux_config_files/ultisnips and replace them with hardlinks. 
