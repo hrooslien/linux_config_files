@@ -14,4 +14,6 @@ ln -s ~/linux_config_files/multihost_bashrc/base_bashrc .bashrc
 ```
 
 ### Ultisnips
-I use Ultisnips in my .vimrc, which stores the snippets in ~/.vim/Ultisnips. In order to keep my .snippets files synched across machines, I move new files created in .vim/Ultisnips/ to linux_config_files/ultisnips and replace them with hardlinks. 
+I use [Ultisnips](https://github.com/SirVer/ultisnips) in my .vimrc, which stores the snippets in ~/.vim/Ultisnips 
+
+In order to keep my .snippets files synched across machines, I move new files created in ~/.vim/Ultisnips/ to ~/linux_config_files/ultisnips and replace them with hardlinks. 
