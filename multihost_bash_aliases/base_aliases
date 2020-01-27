@@ -52,7 +52,7 @@ alias night='gsettings set org.gnome.settings-daemon.plugins.color night-light-t
 # cat but just cut at edge of tmux pane
 catc () {
 width=$(tmux display-message -p '#{pane_width}')
-cat todo_master.md | cut -c -$(($width-3))
+cat $1 | cut -c -$(($width-3))
 }
 
 # mkdir and cd into it
