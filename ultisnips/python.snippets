@@ -1,0 +1,25 @@
+# functions
+snippet def "define a function" b
+def ${1:function name}(${2:args}):
+	"""${3: doc string}"""
+
+	$0
+	return
+endsnippet
+
+# for loops
+snippet for "for loop" b
+for ${1:item} in ${2:iterable}:
+	$0
+endsnippet
+
+snippet foren "for enumerate loop" b
+for ${1:idx},${2:item} in enumerate(${3:iterable}):
+	$0
+endsnippet
+
+# context manager
+snippet with "open file with context manager" b
+with open("${1:filename}") as ${2:f}:
+	$0
+endsnippet
