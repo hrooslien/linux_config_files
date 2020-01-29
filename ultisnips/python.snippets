@@ -1,3 +1,19 @@
+#print
+snippet pr "print statement"
+print(${1:variable})
+$0
+endsnippet
+
+snippet prs "print string"
+print("${1:text}")
+$0
+endsnippet
+
+snippet prfs "print formatted string"
+print(f"${1:text}")
+$0
+endsnippet
+
 # functions
 snippet def "define a function" b
 def ${1:function name}(${2:args}):
@@ -17,6 +33,12 @@ snippet foren "for enumerate loop" b
 for ${1:idx},${2:item} in enumerate(${3:iterable}):
 	$0
 endsnippet
+
+# list comprehension
+snippet lc "list comprehension"
+${1:out} = [${2:item} for ${3:item} in ${4:iterable}]
+endsnippet
+
 
 # context manager
 snippet with "open file with context manager" b

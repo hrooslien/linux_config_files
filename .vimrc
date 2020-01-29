@@ -116,6 +116,13 @@ let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/UltiSnips"]
 nnoremap o o<Esc>
 nnoremap O O<Esc>
 
+" autoclose parentheses
+" inoremap " ""<left>
+" inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+
 " copy/paste-on-select (*) and copy/paste-with crtl+C (+) remap to \y \p and \Y \P
 noremap <Leader>y "*y
 noremap <Leader>p "*p
@@ -130,8 +137,6 @@ colorscheme zenburn
 """ Hilight search and set numbers
 set incsearch " show matches for patterns while they are being typed
 set hlsearch " highlight all matches for searched pattern
-"""" clear highlight with <esc> after a search
-nnoremap <C-o> :noh<return>
 
 " increase the PEP8 max characters
 set cc=90
