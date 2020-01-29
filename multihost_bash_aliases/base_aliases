@@ -52,8 +52,16 @@ alias night='gsettings set org.gnome.settings-daemon.plugins.color night-light-t
 # cat but just cut at edge of tmux pane
 catc () {
 width=$(tmux display-message -p '#{pane_width}')
-cat $1 | cut -c -$(($width-3))
+cat "$@" | cut -c -$(($width-3))
 }
+
+
+todo () {
+python3 ~/documents/work_notes/todo.py "$@"
+catc -n ~/documents/work_notes/todo_master.md
+}
+
+# alias todo='python3 ~/documents/work_notes/todo.py && catc -n ~/documents/work_notes/todo_master.md'
 
 # mkdir and cd into it
 mkcddir () {
