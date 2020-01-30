@@ -18,11 +18,11 @@ Plugin 'python-rope/ropevim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-scripts/MatlabFilesEdition'
-
-" Track the engine.
 Plugin 'SirVer/ultisnips'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
-" IGNORANT Plugin 'SirVer/ultisnips'
 " IGNORANT Plugin 'honza/vim-snippets'
 " IGNORANT Plugin 'tpope/vim-fugitive'
 " IGNORANT Plugin 'w0rp/ale'
@@ -30,13 +30,10 @@ Plugin 'SirVer/ultisnips'
 " IGNORANT Plugin 'ludovicchabant/vim-gutentags'
 " IGNORANT Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " IGNORANT Plugin 'junegunn/fzf.vim'
-Plugin 'scrooloose/nerdtree'
 " IGNORANT Plugin 'vim-airline/vim-airline'
 " IGNORANT Plugin 'vim-airline/vim-airline-themes'
 " IGNORANT Plugin 'airblade/vim-gitgutter'
 " IGNORANT Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
 
 "" All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,7 +43,7 @@ filetype plugin indent on    " required
 set number
 set relativenumber
 set encoding=utf-8
-
+set wildmenu " list completion options when typing in comandline mode
 set linebreak " wrap long lines at a character in 'breakat' (default " ^I!@*-+;:,./?") rather than at the last character that fits on the screen.
 
 syntax enable " highlight special words to aid readability
@@ -108,15 +105,16 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
+" where ultisnips looks for snippets (I think you can add multiple items in
+" the list)
 let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/UltiSnips"]
 
 " vim remaps
-" add blank lines without entering insert mode
+" add blank lines without entering insert mode (default was to insert)
 nnoremap o o<Esc>
 nnoremap O O<Esc>
 
-" autoclose parentheses
+" autoclose parentheses - precede with ctrl-v to disable the autoclose (also, I found the auto quote closing annoying so I commented)
 " inoremap " ""<left>
 " inoremap ' ''<left>
 inoremap ( ()<left>
@@ -128,6 +126,7 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
+
 " Theme options
 set t_Co=256
 " set background=dark
@@ -180,21 +179,16 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " Fix keys
 " IGNORANT set backspace=2
 
-" IGNORANT let g:UltiSnipsExpandTrigger='<tab>'
-" IGNORANT let g:UltiSnipsListSnippets='<c-tab>'
-" IGNORANT let g:UltiSnipsJumpForwardTrigger='<c-j>'
-" IGNORANT let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-
 " IGNORANT nmap <F8> :TagbarToggle<CR>
 
-" general scripting
-\ set tabstop=4
-\ set softtabstop=4
-\ set shiftwidth=4
+" general scripting (I pulled these out from the python PEP8 below)
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 " \ set textwidth=79
-\ set expandtab " expand tabs into spaces
-\ set autoindent
-\ set showmatch " show the matching part of the pair for [] {} and ()
+set expandtab " expand tabs into spaces
+set autoindent
+set showmatch " show the matching part of the pair for [] {} and ()
 
 " matlab specific
 "

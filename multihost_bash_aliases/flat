@@ -14,7 +14,7 @@ alias ufcp='ufc; vlc -f "${path}${current_vid}" &'
 alias ufcr='mv ${path}${current_vid} ${path}${current_vid::-4}_Watched${current_vid: -4}'
 
 # launch utorrent server
-alias ut='utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &'
+alias ut='utserver -settingspath /usr/local/utorrent-server-alpha-v3_3/ &'
 
 # read book
 alias nerd='evince ~/Documents/UNIX*.pdf &'
