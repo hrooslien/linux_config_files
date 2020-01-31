@@ -30,7 +30,7 @@ alias untar='tar zxvf'
 # git
 # alias gitup='git add . && git commit -m "upload" && git push'
 gitup () {
-git add . && git commit -m $1 && git push
+git add . && git commit -m "$1" && git push
 }
 
 alias gitstat='git status'
