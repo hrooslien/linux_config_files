@@ -28,7 +28,11 @@ alias llt="(tput rmam; ls -alhF; tput smam)"
 alias untar='tar zxvf'
 
 # git
-alias gitup='git add . && git commit -m "upload" && git push'
+# alias gitup='git add . && git commit -m "upload" && git push'
+gitup () {
+git add . && git commit -m $1 && git push
+}
+
 alias gitstat='git status'
 alias gitlog="git log --graph --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' -n5"
 # open applications with & to allow me to continue working in the terminal
@@ -55,13 +59,10 @@ width=$(tmux display-message -p '#{pane_width}')
 cat "$@" | cut -c -$(($width-3))
 }
 
-
 todo () {
 python3 ~/documents/work_notes/todo.py "$@"
 catc -n ~/documents/work_notes/todo_master.md
 }
-
-# alias todo='python3 ~/documents/work_notes/todo.py && catc -n ~/documents/work_notes/todo_master.md'
 
 # mkdir and cd into it
 mkcddir () {

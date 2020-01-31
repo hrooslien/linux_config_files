@@ -107,7 +107,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 " where ultisnips looks for snippets (I think you can add multiple items in
 " the list)
-let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/ultisnips"]
 
 " vim remaps
 " add blank lines without entering insert mode (default was to insert)
