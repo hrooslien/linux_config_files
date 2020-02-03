@@ -22,7 +22,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-
+Plugin 'jpalardy/vim-slime'
 " IGNORANT Plugin 'honza/vim-snippets'
 " IGNORANT Plugin 'tpope/vim-fugitive'
 " IGNORANT Plugin 'w0rp/ale'
@@ -72,31 +72,44 @@ set splitright
 " out the if porion. I don't want to remove it straight away though...
 " 
 " vim split navigations working with tmux (ctrl+h,j,k,l)
-" if exists('$TMUX')
-	" function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-		" let previous_winnr = winnr()
-		" silent! execute "wincmd " . a:wincmd
-		" if previous_winnr == winnr()
-			" call system("tmux select-pane -" . a:tmuxdir)
-			" redraw!
-		" endif
-	" endfunction
-" 
-	" let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-	" let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-	" let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-" 
-	" nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-	" nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-	" nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-	" nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-" else
+if exists('$TMUX')
+	function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+		let previous_winnr = winnr()
+		silent! execute "wincmd " . a:wincmd
+		if previous_winnr == winnr()
+			call system("tmux select-pane -" . a:tmuxdir)
+			redraw!
+		endif
+	endfunction
+
+	let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+	let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+	let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+
+	nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+	nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+	nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+	nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+else
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
-" endif
+endif
 
+" vim-slime lets me send visual selections from vim to a tmux pane of my
+" choice. 
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+" You can set the target manually using hitting C-c and then v.
+" ":i.j"    means the ith window, jth pane
+" I want the default to be below the vim I'm working in
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{down-of}"}
+" and not to ask me about it even on the first time I use it 
+let g:slime_dont_ask_default = 1
+" IPython has a %cpaste "magic function" that allows for error-free pasting.
+" In order for vim-slime to make use of this feature for Python buffers:
+let g:slime_python_ipython = 1
 
 " Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"

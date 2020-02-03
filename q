@@ -1,0 +1,41 @@
+* [1;34m1992ee7[m - [1;32m(2 hours ago)[m [37mtest successful[m [2;37mMatthew Bennett[m [1;33m (HEAD -> master, origin/master, origin/HEAD)[m
+* [1;34mb773c84[m - [1;32m(2 hours ago)[m [37mthis is a test[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34me1b85a5[m - [1;32m(2 hours ago)[m [37msymbolic directory link for ultisnip; gitup function to take commit message[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34m42a7164[m - [1;32m(2 hours ago)[m [37msymbolic directory link for ultisnip; gitup function to take comm[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34m11fd90e[m - [1;32m(23 hours ago)[m [37mupload[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34mf531f79[m - [1;32m(2 days ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+* [1;34mc866759[m - [1;32m(2 days ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+* [1;34m5e267ac[m - [1;32m(3 days ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+* [1;34m14b4f40[m - [1;32m(4 days ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+* [1;34m859a4d0[m - [1;32m(4 days ago)[m [37mupload[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34mb6101fa[m - [1;32m(4 days ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+* [1;34m17ed9a4[m - [1;32m(4 days ago)[m [37mupload[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34m2f7482e[m - [1;32m(5 days ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+* [1;34m702c10e[m - [1;32m(5 days ago)[m [37mupload[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34m4bdd4b5[m - [1;32m(5 days ago)[m [37mupload[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34ma170c73[m - [1;32m(5 days ago)[m [37madded ultisnips (be sure to move new files created in created in .vim/Ultisnips/ to linux_config_files/ultisnips and replace them with hardlinks[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34m40ddb29[m - [1;32m(10 days ago)[m [37multisnip -> .vimrc; added functions mkcddir & catc -> alias; disable flow control -> base_bashrc[m [2;37mmatthew[m [1;33m[m
+* [1;34m2cdee65[m - [1;32m(11 days ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+*   [1;34m6415495[m - [1;32m(11 days ago)[m [37mMerge branch 'master' of git+ssh://github.com/Matt-A-Bennett/linux_config_files[m [2;37mmatthew[m [1;33m[m
+[32m|[m[33m\[m  
+[32m|[m * [1;34m70f7e4b[m - [1;32m(2 weeks ago)[m [37mupload[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [33m|[m [1;34m9366736[m - [1;32m(11 days ago)[m [37mcommented out some tmux/vim pane switching stuff (see .vimrc for better comment[m [2;37mmatthew[m [1;33m[m
+[33m|[m[33m/[m  
+* [1;34m36c93c6[m - [1;32m(3 weeks ago)[m [37mupload[m [2;37mmatthew[m [1;33m[m
+* [1;34mce8f9c4[m - [1;32m(3 weeks ago)[m [37madded an xcape in .bashrc to make sure caps gets changed[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34mfb7fcac[m - [1;32m(4 weeks ago)[m [37muncommented a .vimrc python indent thing (anf maybe some other plugins)[m [2;37mMatthew[m [1;33m[m
+* [1;34m94d2718[m - [1;32m(4 weeks ago)[m [37mupload[m [2;37mMatthew[m [1;33m[m
+* [1;34m8c623ed[m - [1;32m(4 weeks ago)[m [37mupload[m [2;37mMatthew[m [1;33m[m
+* [1;34m81e30b3[m - [1;32m(4 weeks ago)[m [37mcreated laptop config files[m [2;37mMatthew[m [1;33m[m
+* [1;34m9d9b65e[m - [1;32m(4 weeks ago)[m [37mtest over[m [2;37mMatthew[m [1;33m[m
+* [1;34m11ea0be[m - [1;32m(4 weeks ago)[m [37mtest[m [2;37mMatthew[m [1;33m[m
+* [1;34m081a189[m - [1;32m(6 weeks ago)[m [37madded lt and llt for truncating instead of wrapping file names that are too long for the terminal[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34m0ab3778[m - [1;32m(6 weeks ago)[m [37mmoved night light from flat to base[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34m114c1fd[m - [1;32m(7 weeks ago)[m [37mtweaked colours for actuve pane borders[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34mfcbb842[m - [1;32m(7 weeks ago)[m [37mtweaked tmux colours for active pane focusing[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34me2009c9[m - [1;32m(8 weeks ago)[m [37madded alias for matlab -nodesktop -nosplash[m [2;37mmatthew[m [1;33m[m
+* [1;34m71f7c76[m - [1;32m(8 weeks ago)[m [37m.vimrc: system/vim clipboards. moved some python specific PEP8 lines into general vim settings (for use with matlab files); .bashrc: added variables mattb@130.104.83.192 and mbennett@storage.cism.ucl.ac.be to stand in for the addresses[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34m3ed68d8[m - [1;32m(9 weeks ago)[m [37mtrying to make mkdircd[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34mcbae843[m - [1;32m(9 weeks ago)[m [37malias to adjust night light[m [2;37mMatthew Bennett[m [1;33m[m
+* [1;34mbeed47a[m - [1;32m(9 weeks ago)[m [37mDelete .base_aliases.swp[m [2;37mMatt-A-Bennett[m [1;33m[m
+* [1;34me213536[m - [1;32m(9 weeks ago)[m [37mreconfiguring aliases after flat reinstallation[m [2;37mMatthew Bennett[m [1;33m[m
