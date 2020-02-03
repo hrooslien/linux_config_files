@@ -109,7 +109,7 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{down-of
 let g:slime_dont_ask_default = 1
 " IPython has a %cpaste "magic function" that allows for error-free pasting.
 " In order for vim-slime to make use of this feature for Python buffers:
-let g:slime_python_ipython = 1
+" let g:slime_python_ipython = 1
 
 " Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"
