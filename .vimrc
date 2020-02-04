@@ -42,6 +42,7 @@ filetype plugin indent on    " required
 " some things I've collected from online
 set number
 set relativenumber
+set nrformats= " don't interpret 007 as an octal (<C-a> will now make 008, not 010)
 set encoding=utf-8
 set wildmenu " list completion options when typing in comandline mode
 set linebreak " wrap long lines at a character in 'breakat' (default " ^I!@*-+;:,./?") rather than at the last character that fits on the screen.
@@ -107,9 +108,8 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{down-of}"}
 " and not to ask me about it even on the first time I use it 
 let g:slime_dont_ask_default = 1
-" IPython has a %cpaste "magic function" that allows for error-free pasting.
-" In order for vim-slime to make use of this feature for Python buffers:
-" let g:slime_python_ipython = 1
+" make F9 a shortcut for sending N lines to the tmux pane
+:map <F9> V<C-c><C-c>
 
 " Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"
@@ -124,8 +124,8 @@ let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/ultisnips"]
 
 " vim remaps
 " add blank lines without entering insert mode (default was to insert)
-nnoremap o o<Esc>
-nnoremap O O<Esc>
+" nnoremap o o<Esc>
+" nnoremap O O<Esc>
 
 " autoclose parentheses - precede with ctrl-v to disable the autoclose (also, I found the auto quote closing annoying so I commented)
 " inoremap " ""<left>
@@ -210,5 +210,4 @@ set showmatch " show the matching part of the pair for [] {} and ()
 au BufNewFile,BufRead *.py " apparently this will only apply to .py files
 	\ set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
 	\ let python_highlight_all = 1 " enable all Python syntax highlighting features
-
 
