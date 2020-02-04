@@ -3,7 +3,7 @@ alias sd='shutdown'
 alias skype='skypeforlinux &'
 
 # display the ufc video I am watching/should watch next
-alias ufc='path="/home/mattb/Videos/ufc/"; \
+alias ufc='path="/home/mattb/videos/ufc/"; \
 	current_vid="$(ls ${path} | grep -vi watched | grep -vi cancelled | head -n1)"; \
 	echo "${current_vid}"'
 
