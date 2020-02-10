@@ -43,8 +43,8 @@ filetype plugin indent on    " required
 " some things I've collected from online
 " I want to override one of the defaults here, so load it now then overwrite
 runtime! plugin/sensible.vim
-set laststatus=1
 set number
+set laststatus=1
 " set relativenumber
 set nrformats= " don't interpret 007 as an octal (<C-a> will now make 008, not 010)
 set encoding=utf-8
@@ -53,7 +53,7 @@ set wildmenu " list completion options when typing in command line mode
 set linebreak " wrap long lines at a character in 'breakat' (default " ^I!@*-+;:,./?") rather than at the last character that fits on the screen.
 set history=200
 
-set spell spelllang=en_gb
+" set spell spelllang=en_gb
 " <Leader>s changes the word to the first suggestion
 :nnoremap <Leader>s a<C-X>s<Esc> 
 
