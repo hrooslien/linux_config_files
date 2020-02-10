@@ -14,6 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-unimpaired'
 " IGNORANT Plugin 'tpope/vim-fugitive'
 Plugin 'jnurmine/Zenburn'
 Plugin 'flazz/vim-colorschemes'
@@ -24,6 +26,7 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-scripts/MatlabFilesEdition'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jpalardy/vim-slime'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'SirVer/ultisnips'
 " IGNORANT Plugin 'honza/vim-snippets'
 " IGNORANT Plugin 'w0rp/ale'
@@ -53,7 +56,8 @@ set wildmenu " list completion options when typing in command line mode
 set linebreak " wrap long lines at a character in 'breakat' (default " ^I!@*-+;:,./?") rather than at the last character that fits on the screen.
 set history=200
 
-" set spell spelllang=en_gb
+set spell spelllang=en_gb
+set nospell
 " <Leader>s changes the word to the first suggestion
 :nnoremap <Leader>s a<C-X>s<Esc> 
 
@@ -76,37 +80,6 @@ set ignorecase
 " where new vim pane splits are positioned
 set splitbelow
 set splitright
-
-" I was having trouble with my C^hjkl switching (after quiting vim, I couldn't
-" switch tmux pane with C^hjkl...). Since I always have a tmux session up and
-" the else statement below seems to work in all circumstances, I commnented
-" out the if porion. I don't want to remove it straight away though...
-" 
-" vim split navigations working with tmux (ctrl+h,j,k,l)
-if exists('$TMUX')
-	function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-		let previous_winnr = winnr()
-		silent! execute "wincmd " . a:wincmd
-		if previous_winnr == winnr()
-			call system("tmux select-pane -" . a:tmuxdir)
-			redraw!
-		endif
-	endfunction
-
-	let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-	let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-	let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-	nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-	nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-	nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-	nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
-endif
 
 " vim-slime lets me send visual selections from vim to a tmux pane of my
 " choice. 
