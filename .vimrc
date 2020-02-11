@@ -186,8 +186,24 @@ set expandtab " expand tabs into spaces
 set autoindent
 set showmatch " show the matching part of the pair for [] {} and ()
 
-" matlab specific
-"
+" run a command, but put the cursor back when it's done
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction 
+
+" remove trailing whitespace and perform auto indent 
+" autocmd BufWritePre *.py,*.m,*.md :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
+autocmd BufWritePre *.py,*.m :call Preserve("normal gg=G")
+
 " pyhon specific
 " add PEP8 indentation
 au BufNewFile,BufRead *.py " apparently this will only apply to .py files
