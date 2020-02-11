@@ -19,6 +19,7 @@ alias ut='utserver -settingspath /usr/local/utorrent-server-alpha-v3_3/ &'
 # read book
 alias nerd='evince ~/Documents/UNIX*.pdf &'
 
+# video editing functions
 vidcompile () {
 if [[ $# -eq 0 ]] ; then
     echo 'name of output video not supplied'
