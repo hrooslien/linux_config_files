@@ -67,7 +67,7 @@ unset color_prompt force_color_prompt
 # I don't want a huge path on display
 PROMPT_DIRTRIM=2
 
-LS_COLORS=$LS_COLORS:'di=38;5;43:' ; export LS_COLORS
+# LS_COLORS=$LS_COLORS:'di=38;5;43:' ; export LS_COLORS
 
 # Show all 256 colors (and background) in terminal
 # for fgbg in 38 48 ; do # Foreground / Background                                    [76/76]
