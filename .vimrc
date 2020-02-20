@@ -126,6 +126,11 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
+" let g modify insert/append to work on visual lines, in the same way as it
+" modifies motions like 0 and $
+nmap gI g0i
+nmap gA g$i
+
 " Theme options
 set t_Co=256
 " set background=dark
