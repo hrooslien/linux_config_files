@@ -20,6 +20,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'jnurmine/Zenburn'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'jeetsukumaran/vim-indentwise'
 Plugin 'python-rope/ropevim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ycm-core/YouCompleteMe'
@@ -76,6 +77,8 @@ augroup myCmds
 " With both on, searches with no capitals are case insensitive, while searches with a capital characters are case sensitive.
 set smartcase
 set ignorecase
+" replace word under cursor
+:nnoremap <Leader>* :%s/\<<C-r><C-w>\>/
 
 " where new vim pane splits are positioned
 set splitbelow
@@ -154,7 +157,9 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " Set commands to switching between buffers
 :nnoremap <Tab> :bnext!<CR>
 :nnoremap <S-Tab> :bprevious!<CR>
-" IGNORANT :nnoremap <C-X> :bp<bar>sp<bar>bn<bar>bd<CR>
+
+" close buffer without closing window split
+command Bd bp | sp | bn | bd
 
 " file searchs
 " IGNORANT map <c-p> :files<cr>
