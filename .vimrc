@@ -110,13 +110,6 @@ let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/ultisnips"]
 " nnoremap o o<Esc>
 " nnoremap O O<Esc>
 
-" autoclose parentheses - precede with ctrl-v to disable the autoclose (also, I found the auto quote closing annoying so I commented)
-" inoremap " ""<left>
-" inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-
 " copy/paste-on-select (*) and copy/paste-with crtl+C (+) remap to \y \p and \Y \P
 noremap <Leader>y "*y
 noremap <Leader>p "*p
@@ -207,7 +200,7 @@ endfunction
 " remove trailing whitespace and perform auto indent 
 " autocmd BufWritePre *.py,*.m,*.md :call <SID>StripTrailingWhitespaces()
 autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
-autocmd BufWritePre *.py,*.m :call Preserve("normal gg=G")
+autocmd BufWritePre *.m :call Preserve("normal gg=G")
 
 " pyhon specific
 " add PEP8 indentation
