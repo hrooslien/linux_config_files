@@ -114,10 +114,10 @@ let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/ultisnips"]
 " nnoremap O O<Esc>
 
 " copy/paste-on-select (*) and copy/paste-with crtl+C (+) remap to \y \p and \Y \P
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+" noremap <Leader>y "*y
+" noremap <Leader>p "*p
+" noremap <Leader>Y "+y
+" noremap <Leader>P "+p
 
 " let g modify insert/append to work on visual lines, in the same way as it
 " modifies motions like 0 and $

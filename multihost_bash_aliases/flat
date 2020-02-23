@@ -19,6 +19,9 @@ alias ut='utserver -settingspath /usr/local/utorrent-server-alpha-v3_3/ &'
 # read book
 alias nerd='evince ~/Documents/UNIX*.pdf &'
 
+# plot typing speed 
+alias tc='python3 ~/code/python/speed.py &'
+
 # video editing functions
 vidcompile () {
 if [[ $# -eq 0 ]] ; then
