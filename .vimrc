@@ -95,7 +95,7 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{down-of
 " and not to ask me about it even on the first time I use it 
 let g:slime_dont_ask_default = 1
 " make F9 a shortcut for sending N lines to the tmux pane
-:map <F9> V<C-c><C-c>
+:nnoremap <F9> V<C-c><C-c>
 
 " Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"
@@ -121,8 +121,8 @@ let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/ultisnips"]
 
 " let g modify insert/append to work on visual lines, in the same way as it
 " modifies motions like 0 and $
-nmap gI g0i
-nmap gA g$i
+nnoremap gI g0i
+nnoremap gA g$i
 
 " Theme options
 set t_Co=256
@@ -142,7 +142,7 @@ set cc=90
 " IGNORANT let g:airline#extensions#tabline#formatter = 'default'
 
 " Nerdtree configuration
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " close vim if the only window left open is a NERDTree
@@ -160,7 +160,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 command Bd bp | sp | bn | bd
 
 " file searchs
-" IGNORANT map <c-p> :files<cr>
+" IGNORANT noremap <c-p> :files<cr>
 
 " ale configuration
 """" better formatting fo worp/ale
@@ -178,7 +178,7 @@ command Bd bp | sp | bn | bd
 " Fix keys
 " IGNORANT set backspace=2
 
-" IGNORANT nmap <F8> :TagbarToggle<CR>
+" IGNORANT nnoremap <F8> :TagbarToggle<CR>
 
 " general scripting (I pulled these out from the python PEP8 below)
 set tabstop=4
