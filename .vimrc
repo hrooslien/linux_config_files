@@ -91,7 +91,7 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 " You can set the target manually using hitting C-c and then v.
 " ":i.j"    means the ith window, jth pane
 " I want the default to be below the vim I'm working in
-let g:slime_default_config = {"socket_name": "default", "target_pane": "{down-of}"}
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{left-of}"}
 " and not to ask me about it even on the first time I use it 
 let g:slime_dont_ask_default = 1
 " make F9 a shortcut for sending N lines to the tmux pane
@@ -99,7 +99,7 @@ let g:slime_dont_ask_default = 1
 
 " Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<c-s>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
