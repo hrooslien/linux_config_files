@@ -19,10 +19,8 @@ alias ut='utserver -settingspath /usr/local/utorrent-server-alpha-v3_3/ &'
 # read book
 alias nerd='evince ~/Documents/UNIX*.pdf &'
 
-# close stupid bluetooth error window
-close_bluetooth_error_window () {
-    wmctrl -ic 0x01c0000d
-}
+# plot typing speed 
+alias tc='python3 ~/code/python/speed.py &'
 
 # video editing functions
 vidcompile () {
@@ -56,3 +54,11 @@ vidplaylast () {
 }
 
 alias vidkeydisp='screenkey/./screenkey -p fixed -g 750x100+1100+825 &'
+
+# close stupid bluetooth error window
+wmctrl -ic 0x01c0000d
+
+night_dim () {
+TIME=$(date | awk '{print $4}' | cut -d: -f1)
+echo $((17-10#$TIME))
+}

@@ -1,5 +1,17 @@
+snippet cb "%%%% Break %%%%"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+endsnippet
+
+snippet spr "sprintf" i
+sprintf('${1:%s}', $2);
+endsnippet
+
+snippet fpr "fprintf" b
+fprintf('${1:%s}${2:...\n}', $3);
+endsnippet
+
 snippet for "for loop" b
-for ${1:index} = ${2:start}:${3:stop}
+for $1idx = ${2:1}:size($3)
 	$0
 end
 endsnippet
