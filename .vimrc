@@ -127,7 +127,7 @@ command! Bd bp | sp | bn | bd
 autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
 autocmd BufWritePre *.m :call Preserve("normal gg=G")
 
-" pyhon specific
+" python specific
 au BufNewFile,BufRead *.py " apparently this will only apply to .py files
 	set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
 	let python_highlight_all = 1 " enable all Python syntax highlighting features
