@@ -67,21 +67,6 @@ unset color_prompt force_color_prompt
 # I don't want a huge path on display
 PROMPT_DIRTRIM=2
 
-# LS_COLORS=$LS_COLORS:'di=38;5;43:' ; export LS_COLORS
-
-# Show all 256 colors (and background) in terminal
-# for fgbg in 38 48 ; do # Foreground / Background                                    [76/76]
-#     for color in {0..255} ; do # Colors
-#         # Display the color
-#         printf "\e[${fgbg};5;%sm  %3s  \e[0m" $color $color
-#         # Display 6 colors per lines
-#         if [ $((($color + 1) % 6)) == 4 ] ; then
-#             echo # New line
-#         fi
-#     done
-#     echo # New line
-# done
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
