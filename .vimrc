@@ -88,6 +88,7 @@ colorscheme zenburn
 "---- remaps -----------------------------------------------------------------
 " edit vimrc file in split window
 :nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <Leader>sv :source $MYVIMRC<cr>
 
 " instantly go with first spelling suggestion
 :nnoremap <Leader>s a<C-X>s<Esc> 
@@ -126,8 +127,10 @@ command! Bd bp | sp | bn | bd
 " remove trailing whitespace and perform auto indent 
 autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
 autocmd BufWritePre *.m :call Preserve("normal gg=G")
+autocmd BufNewFile,BufRead *.md setlocal wrap 
+autocmd BufNewFile,BufRead *.md setlocal spell
 
-" pyhon specific
+" python specific
 au BufNewFile,BufRead *.py " apparently this will only apply to .py files
 	set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
 	let python_highlight_all = 1 " enable all Python syntax highlighting features
