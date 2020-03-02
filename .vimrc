@@ -95,7 +95,7 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{left-of
 " and not to ask me about it even on the first time I use it 
 let g:slime_dont_ask_default = 1
 " make F9 a shortcut for sending N lines to the tmux pane
-:nnoremap <F9> V<C-c><C-c>
+:nmap <F9> V<C-c><C-c>
 
 " Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"
