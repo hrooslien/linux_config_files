@@ -88,6 +88,14 @@ fi
 if [ -f ~/linux_config_files/multihost_bash_aliases/$HOSTNAME ]; then
 	source ~/linux_config_files/multihost_bash_aliases/$HOSTNAME
 fi
+# source base bash_functions if it exists
+if [ -f ~/linux_config_files/multihost_bash_functions/base_functions ]; then
+	source ~/linux_config_files/multihost_bash_functions/base_functions
+fi
+# source host specific bash_functions if they exist
+if [ -f ~/linux_config_files/multihost_bash_functions/$HOSTNAME ]; then
+	source ~/linux_config_files/multihost_bash_functions/$HOSTNAME
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

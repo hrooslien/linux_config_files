@@ -22,43 +22,5 @@ alias nerd='evince ~/Documents/UNIX*.pdf &'
 # plot typing speed 
 alias tc='python3 ~/code/python/speed.py &'
 
-# video editing functions
-vidcompile () {
-    if [[ $# -eq 0 ]] ; then
-        echo 'name of output video not supplied'
-            return 1
-            fi
-            ls *mp4 | cut -f 1 | awk '{printf "file '\''%s'\''\n", $0}' > input_vids
-            ffmpeg -f concat -i input_vids -c copy $1.mp4
-            mkdir -p completed/$1/components
-            mv *.mp4 input_vids completed/$1/components
-            ffmpeg -i completed/$1/components/$1.mp4 -filter_complex "[0:v]setpts=PTS/1.2[v];[0:a]atempo=1.2[a]" -map "[v]" -map "[a]" completed/$1/components/$1_sp1.2.mp4
-            mv completed/$1/components/$1_sp1.2.mp4 completed/$1
-}
-
-vidaudio () {
-    if [[ $# -eq 0 ]] ; then
-        echo 'name of input video not supplied'
-            return 1
-            fi
-            ffmpeg -i completed/$1/$1_sp1.2.mp4 -i completed/$1/$1_sp1.2.mp3 -c copy -map 0:0 -map 1:0 -map 0:1 -disposition:a:1 comment completed/$1/$1_sp1.2_enhance.mp4
-            mv completed/$1/$1_sp1.2.mp4 completed/$1/$1_sp1.2.mp3 completed/$1/components
-}
-
-vidrmlast () {
-    rm $(ls *mp4 | cut -f1 | tail -n1)
-}
-
-vidplaylast () {
-    vlc $(ls *mp4 | cut -f1 | tail -n1) &
-}
-
+# show pressed keys onscreen for vim youtube videos
 alias vidkeydisp='screenkey/./screenkey -p fixed -g 750x100+1100+825 &'
-
-# close stupid bluetooth error window
-wmctrl -ic 0x01c0000d
-
-night_dim () {
-TIME=$(date | awk '{print $4}' | cut -d: -f1)
-echo $((17-10#$TIME))
-}
