@@ -13,6 +13,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 ### my own aliases ###
 alias cl='clear'
+alias clc='clear'
 
 # Add an "alert" alias for long running commands.  Use like so:
 # move up 1,2 or 3 directories 
@@ -30,7 +31,6 @@ alias llt="(tput rmam; ls -alhF; tput smam)"
 # Add an "alert" alias for long running commands.  Use like so:
 alias untar='tar zxvf'
 
-# Add an "alert" alias for long running commands.  Use like so:
 # git
 # alias gitup='git add . && git commit -m "upload" && git push'
 gitup () {
