@@ -122,14 +122,26 @@ iabbrev @u matthew.bennett@uclouvain.be
 "---- commands ---------------------------------------------------------------
 " close buffer without closing window split
 command! Bd bp | sp | bn | bd
+
+augroup filetype_html
+    autocmd!
+    autocmd filetype html nnoremap <buffer> <localleader>f Vatzf
+augroup END
 "-----------------------------------------------------------------------------
 
 "---- file specific settings -------------------------------------------------
 " remove trailing whitespace and perform auto indent 
-autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
-autocmd BufWritePre *.m :call Preserve("normal gg=G")
-autocmd BufNewFile,BufRead *.md setlocal wrap 
-autocmd BufNewFile,BufRead *.md setlocal spell
+augroup tidy_code
+    autocmd!
+    autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
+    autocmd BufWritePre *.m :call Preserve("normal gg=G")
+augroup END 
+
+augroup markdown
+    autocmd!
+    autocmd BufNewFile,BufRead *.md setlocal wrap 
+    autocmd BufNewFile,BufRead *.md setlocal spell
+augroup END
 
 " python specific
 au BufNewFile,BufRead *.py " apparently this will only apply to .py files
@@ -138,15 +150,16 @@ au BufNewFile,BufRead *.py " apparently this will only apply to .py files
 "-----------------------------------------------------------------------------
 
 "---- cursor behaviour -------------------------------------------------------
-:autocmd InsertEnter * set cul " highlight line when in insert mode
-:autocmd InsertLeave * set nocul " turn off above when leaving insert mode
+augroup cursor_behaviour
+    autocmd!  
+    autocmd InsertEnter * set cul " highlight line when in insert mode
+    autocmd InsertLeave * set nocul " turn off above when leaving insert mode
+    " reset cursor on start:
+    autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
+
 let &t_SI = "\e[5 q" " cursor blinking bar on insert mode
 let &t_EI = "\e[2 q" " cursor steady block on command mode
-" reset cursor on start:
-augroup myCmds
-	au!
-	autocmd VimEnter * silent !echo -ne "\e[2 q"
-	augroup END
 "-----------------------------------------------------------------------------
 
 "==== PLUGIN CONFIGS =========================================================
