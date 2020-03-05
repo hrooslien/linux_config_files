@@ -91,6 +91,16 @@ colorscheme zenburn
 :nnoremap <Leader>sv :source $MYVIMRC<cr>
 :nnoremap <Leader>ea :vsplit /home/mattb/linux_config_files/multihost_bash_aliases/base_aliases<cr>
 
+" resize windows (and make it repeatable with dot command)
+" widen the split
+nnoremap <Plug>WidenSplit :exe "vertical resize +5"<cr>
+\:call repeat#set("\<Plug>WidenSplit")<CR>
+nmap <Leader>= <Plug>WidenSplit
+" thin the split 
+nnoremap <Plug>ThinSplit :exe "vertical resize -5"<cr>
+\:call repeat#set("\<Plug>ThinSplit")<CR>
+nmap <Leader>- <Plug>ThinSplit
+
 " instantly go with first spelling suggestion
 :nnoremap <Leader>s a<C-X>s<Esc> 
 
@@ -135,6 +145,9 @@ autocmd BufNewFile,BufRead *.md setlocal spell
 au BufNewFile,BufRead *.py " apparently this will only apply to .py files
 	set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
 	let python_highlight_all = 1 " enable all Python syntax highlighting features
+
+au BufNewFile,BufRead *.m
+    iabbrev key keyboard
 "-----------------------------------------------------------------------------
 
 "---- cursor behaviour -------------------------------------------------------
@@ -193,7 +206,8 @@ let g:ycm_filetype_blacklist = {
 "-----------------------------------------------------------------------------
 "=============================================================================
 
-"---- functions --------------------------------------------------------------
+"==== functions ==============================================================
+"---- restore cursor postition -----------------------------------------------
 " run a command, but put the cursor back when it's done
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
@@ -207,3 +221,16 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction 
 "-----------------------------------------------------------------------------
+
+"---- copy matches to register -----------------------------------------------
+" copies only the text that matches search hits. Use with :CopyMatches x 
+" where x is any register (supplying no x copies to clipboard
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
+"-----------------------------------------------------------------------------
+"=============================================================================

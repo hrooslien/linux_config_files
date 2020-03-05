@@ -1,0 +1,23 @@
+
+# cat but just cut at edge of tmux pane
+catc () {
+width=$(tmux display-message -p '#{pane_width}')
+cat "$@" | cut -c -$(($width-3))
+}
+
+# wrapper for python script (passes all arguments)
+# also displays todo list with nubers
+todo () {
+python3 ~/documents/work_notes/todo.py "$@"
+catc -n ~/documents/work_notes/todo_master.md
+}
+
+# alias gitup='git add . && git commit -m "upload" && git push'
+gitup () {
+git add . && git commit -m "$1" && git push
+}
+
+# mkdir and cd into it
+mkcddir () {
+mkdir -p $1 && cd $1
+}
