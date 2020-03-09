@@ -132,11 +132,6 @@ iabbrev @u matthew.bennett@uclouvain.be
 "---- commands ---------------------------------------------------------------
 " close buffer without closing window split
 command! Bd bp | sp | bn | bd
-
-augroup filetype_html
-    autocmd!
-    autocmd filetype html nnoremap <buffer> <localleader>f Vatzf
-augroup END
 "-----------------------------------------------------------------------------
 
 "---- file specific settings -------------------------------------------------
@@ -147,19 +142,24 @@ augroup tidy_code
     autocmd BufWritePre *.m :call Preserve("normal gg=G")
 augroup END 
 
+augroup python
+    autocmd!
+    autocmd BufNewFile,BufRead *.py " apparently this will only apply to .py files
+        \ set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
+        \ let python_highlight_all = 1 " enable all Python syntax highlighting features
+augroup END
+
+augroup matlab
+    autocmd!
+    autocmd BufNewFile,BufRead *.m 
+        \ iabbrev key keyboard
+augroup END
+
 augroup markdown
     autocmd!
     autocmd BufNewFile,BufRead *.md setlocal wrap 
     autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
-
-" python specific
-au BufNewFile,BufRead *.py " apparently this will only apply to .py files
-	set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
-	let python_highlight_all = 1 " enable all Python syntax highlighting features
-
-au BufNewFile,BufRead *.m
-    iabbrev key keyboard
 "-----------------------------------------------------------------------------
 
 "---- cursor behaviour -------------------------------------------------------
@@ -247,3 +247,4 @@ endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
 "-----------------------------------------------------------------------------
 "=============================================================================
+
