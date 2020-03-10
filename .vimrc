@@ -139,7 +139,7 @@ command! Bd bp | sp | bn | bd
 augroup tidy_code
     autocmd!
     autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
-    autocmd BufWritePre *.m :call Preserve("normal gg=G")
+    autocmd BufWritePre *.m :call Preserve("normal! gg=G")
 augroup END 
 
 augroup python
