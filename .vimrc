@@ -1,6 +1,6 @@
 "---- required ---------------------------------------------------------------
-set nocompatible              " be iMproved, required
-filetype plugin indent on    " required
+set nocompatible " don't try to be compatible with Vi
+filetype plugin indent on "use default plugins
 "-----------------------------------------------------------------------------
 
 "---- general settings -------------------------------------------------------
@@ -28,6 +28,7 @@ set smartcase " With both on, searches with no capitals are case insensitive, wh
 set ignorecase " ...searches with capital characters are case sensitive.
 set spell spelllang=en
 set nospell
+set lazyredraw " don't redraw screen during macros (let them complete faster)
 set cc=80 "show vertical bar at 80 columns
 set t_Co=256 " use full colours
 syntax enable " highlight special words to aid readability
@@ -86,59 +87,65 @@ colorscheme zenburn
 "=============================================================================
 
 "---- remaps -----------------------------------------------------------------
-" edit common file in split window
-:nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
-:nnoremap <Leader>sv :source $MYVIMRC<cr>
-:nnoremap <Leader>ea :vsplit /home/mattb/linux_config_files/multihost_bash_aliases/base_aliases<cr>
+augroup general
+    autocmd!
+    " edit common file in split window
+    autocmd BufNewFile,BufRead * :nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
+    autocmd BufNewFile,BufRead * :nnoremap <Leader>sv :source $MYVIMRC<cr>
+    autocmd BufNewFile,BufRead * :nnoremap <Leader>ea :vsplit /home/mattb/linux_config_files/multihost_bash_aliases/base_aliases<cr>
 
-" resize windows (and make it repeatable with dot command)
-" widen the split
-nnoremap <Plug>WidenSplit :exe "vertical resize +5"<cr>
-\:call repeat#set("\<Plug>WidenSplit")<CR>
-nmap <Leader>= <Plug>WidenSplit
-" thin the split 
-nnoremap <Plug>ThinSplit :exe "vertical resize -5"<cr>
-\:call repeat#set("\<Plug>ThinSplit")<CR>
-nmap <Leader>- <Plug>ThinSplit
+    " resize windows (and make it repeatable with dot command)
+    " widen the split
+    autocmd BufNewFile,BufRead * nnoremap <Plug>WidenSplit :exe "vertical resize +5"<cr>
+    \:call repeat#set("\<Plug>WidenSplit")<CR>
+    nmap <Leader>h <Plug>WidenSplit
+    " thin the split 
+    autocmd BufNewFile,BufRead * nnoremap <Plug>ThinSplit :exe "vertical resize -5"<cr>
+    \:call repeat#set("\<Plug>ThinSplit")<CR>
+    nmap <Leader>l <Plug>ThinSplit
+    " heighten the split
+    autocmd BufNewFile,BufRead * nnoremap <Plug>HeightenSplit :exe "resize +3"<cr>
+    \:call repeat#set("\<Plug>HeightenSplit")<CR>
+    nmap <Leader>k <Plug>HeightenSplit
+    " shorten the split 
+    autocmd BufNewFile,BufRead * nnoremap <Plug>ShortenSplit :exe "resize -3"<cr>
+    \:call repeat#set("\<Plug>ShortenSplit")<CR>
+    nmap <Leader>j <Plug>ShortenSplit
 
-" instantly go with first spelling suggestion
-:nnoremap <Leader>s a<C-X>s<Esc> 
+    " instantly go with first spelling suggestion
+    :nnoremap <Leader>s a<C-X>s<Esc> 
 
-" search and replace word under cursor
-:nnoremap <Leader>* :%s/\<<C-r><C-w>\>/
+    " search and replace word under cursor
+    autocmd BufNewFile,BufRead * :nnoremap <Leader>* :%s/\<<C-r><C-w>\>/
 
-" let g modify insert/append to work on visual  lines, in the same way as it
-" modifies motions like 0 and $
-nnoremap gI g0i
-nnoremap gA g$i
+    " let g modify insert/append to work on visual  lines, in the same way as it
+    " modifies motions like 0 and $
+    autocmd BufNewFile,BufRead * nnoremap gI g0i
+    autocmd BufNewFile,BufRead * nnoremap gA g$i
 
-" Switching between buffers
-:nnoremap <Tab> :bnext!<CR>
-:nnoremap <S-Tab> :bprevious!<CR>
+    " Switching between buffers
+    autocmd BufNewFile,BufRead * :nnoremap <Tab> :bnext!<CR>
+    autocmd BufNewFile,BufRead * :nnoremap <S-Tab> :bprevious!<CR>
 
-" reminder not to use arrows in insert mode
-:inoremap <Left> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
-:inoremap <Right> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
-:inoremap <Up> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
-:inoremap <Down> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
-"-----------------------------------------------------------------------------
+    " reminder not to use arrows in insert mode
+    autocmd BufNewFile,BufRead * :inoremap <Left> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
+    autocmd BufNewFile,BufRead * :inoremap <Right> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
+    autocmd BufNewFile,BufRead * :inoremap <Up> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
+    autocmd BufNewFile,BufRead * :inoremap <Down> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
+    "-----------------------------------------------------------------------------
 
-"----abbreviations------------------------------------------------------------
-iabbrev keybaord keyboard
-iabbrev @g bennettmatt4@gmail.com
-iabbrev @u matthew.bennett@uclouvain.be
-"-----------------------------------------------------------------------------
-
-"---- commands ---------------------------------------------------------------
-" close buffer without closing window split
-command! Bd bp | sp | bn | bd
+    "----abbreviations------------------------------------------------------------
+    autocmd BufNewFile,BufRead * iabbrev keybaord keyboard
+    autocmd BufNewFile,BufRead * iabbrev @g bennettmatt4@gmail.com
+    autocmd BufNewFile,BufRead * iabbrev @u matthew.bennett@uclouvain.be
+augroup END
 "-----------------------------------------------------------------------------
 
 "---- file specific settings -------------------------------------------------
 " remove trailing whitespace and perform auto indent 
 augroup tidy_code
     autocmd!
-    autocmd BufWritePre *.py,*.m,*.md :call Preserve("%s/\\s\\+$//e")
+    autocmd BufWritePre *.py,*.m :call Preserve("%s/\\s\\+$//e")
     autocmd BufWritePre *.m :call Preserve("normal! gg=G")
 augroup END 
 
@@ -146,19 +153,31 @@ augroup python
     autocmd!
     autocmd BufNewFile,BufRead *.py " apparently this will only apply to .py files
         \ set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
-        \ let python_highlight_all = 1 " enable all Python syntax highlighting features
+        \ let python_highlight_all=1 " enable all Python syntax highlighting features
 augroup END
 
 augroup matlab
     autocmd!
     autocmd BufNewFile,BufRead *.m 
-        \ iabbrev key keyboard
+        \ iabbrev <buffer> key keyboard
+    " inside indent block
+    autocmd BufNewFile,BufRead *.m onoremap ii :<c-u>execute "normal [-j^v]-kg_"<cr>
+    " around indent block
+    autocmd BufNewFile,BufRead *.m onoremap ai :<c-u>execute "normal [-V]="<cr>
 augroup END
 
 augroup markdown
     autocmd!
     autocmd BufNewFile,BufRead *.md setlocal wrap 
     autocmd BufNewFile,BufRead *.md setlocal spell
+    " inside headed title:
+    autocmd BufNewFile,BufRead *.md onoremap iht :<c-u>execute "normal! ?^#\\+ \\w\\+.*$\rwvg_"<cr>
+    " around headed title:
+    autocmd BufNewFile,BufRead *.md onoremap aht :<c-u>execute "normal! ?^#\\+ \\w\\+.*$\rvg_"<cr>
+    " inside headed body:
+    autocmd BufNewFile,BufRead *.md onoremap ihb :<c-u>execute "normal! ?^#\\+ \\w\\+.*$\rjv/^#\\+ \\w\\+.*$\rk"<cr>
+    " around headed body:
+    autocmd BufNewFile,BufRead *.md onoremap ahb :<c-u>execute "normal! ?^#\\+ \\w\\+.*$\rv/^#\\+ \\w\\+.*$\rk"<cr>
 augroup END
 "-----------------------------------------------------------------------------
 
@@ -173,6 +192,11 @@ augroup END
 
 let &t_SI = "\e[5 q" " cursor blinking bar on insert mode
 let &t_EI = "\e[2 q" " cursor steady block on command mode
+"-----------------------------------------------------------------------------
+
+"---- commands ---------------------------------------------------------------
+" close buffer without closing window split
+command! Bd bp | sp | bn | bd
 "-----------------------------------------------------------------------------
 
 "==== PLUGIN CONFIGS =========================================================
