@@ -87,7 +87,7 @@ colorscheme zenburn
 
 "---- remaps -----------------------------------------------------------------
 " edit common file in split window
-:nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <Leader>ev :split $MYVIMRC<cr>
 :nnoremap <Leader>sv :source $MYVIMRC<cr>
 :nnoremap <Leader>ea :vsplit /home/mattb/linux_config_files/multihost_bash_aliases/base_aliases<cr>
 
