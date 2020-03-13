@@ -90,9 +90,9 @@ colorscheme zenburn
 augroup general
     autocmd!
     " edit common file in split window
-    autocmd BufNewFile,BufRead * :nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
+    autocmd BufNewFile,BufRead * :nnoremap <Leader>ev :split $MYVIMRC<cr>
     autocmd BufNewFile,BufRead * :nnoremap <Leader>sv :source $MYVIMRC<cr>
-    autocmd BufNewFile,BufRead * :nnoremap <Leader>ea :vsplit /home/mattb/linux_config_files/multihost_bash_aliases/base_aliases<cr>
+    autocmd BufNewFile,BufRead * :nnoremap <Leader>ea :split /home/mattb/linux_config_files/multihost_bash_aliases/base_aliases<cr>
 
     " resize windows (and make it repeatable with dot command)
     " widen the split
