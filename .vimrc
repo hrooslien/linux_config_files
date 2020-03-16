@@ -1,19 +1,32 @@
+"---- things I would like ----------------------------------------------------
+"{{{
+" - when pasting a line, have it match the indent level of the first
+" non-whitespace line above
+" - replace word under the cursor with work in register
+" - matlab folds to use 'function', 'for', 'if', 'while' and go to 'end'
+" - format matlab scripts (blank lines etc.) on saving
+" - automatic folding for markdown sections
+"}}}
+"-----------------------------------------------------------------------------
+
 "---- required ---------------------------------------------------------------
+"{{{
 set nocompatible " don't try to be compatible with Vi
 filetype plugin indent on "use default plugins
+"}}}
 "-----------------------------------------------------------------------------
 
 "---- general settings -------------------------------------------------------
+"{{{
 set encoding=utf-8
 set number
 set history=200 " increase search history
 set splitbelow " where new vim pane splits are positioned
 set splitright " where new vim pane splits are positioned
 set linebreak " wrap long lines at a character in 'breakat' (default " ^I!@*-+;:,./?") 
-set nowrap
+set nowrap " don't wrap lines by default
 set wildmenu " list completion options when typing in command line mode
 set wildmode=longest,list " behave like bash autocomplete rather than zsh
-set laststatus=1
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -29,20 +42,25 @@ set ignorecase " ...searches with capital characters are case sensitive.
 set spell spelllang=en
 set nospell
 set lazyredraw " don't redraw screen during macros (let them complete faster)
+set foldlevelstart=1 " when opening new files, start with only top folds open
 set cc=80 "show vertical bar at 80 columns
 set t_Co=256 " use full colours
 syntax enable " highlight special words to aid readability
+"}}}
 "-----------------------------------------------------------------------------
 
 "==== SETUP VUNDLE PLUGIN MANAGER ============================================
 "---- paths ------------------------------------------------------------------
+"{{{
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
+"}}}
 "---- plugins ----------------------------------------------------------------
+"{{{
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -64,7 +82,9 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'SirVer/ultisnips'
 
+"}}}
 "---- plugins I may want to use one day --------------------------------------
+"{{{
 " Plugin 'honza/vim-snippets'
 " Plugin 'scrooloose/nerdtree'
 " Plugin 'w0rp/ale'
@@ -83,10 +103,12 @@ call vundle#end()            " required
 " I want to override one of the defaults here, so load it now then overwrite
 runtime! plugin/sensible.vim
 colorscheme zenburn
+"}}}
 "-----------------------------------------------------------------------------
 "=============================================================================
 
 "---- remaps -----------------------------------------------------------------
+"{{{
 augroup general
     autocmd!
     " edit common file in split window
@@ -115,6 +137,9 @@ augroup general
     " instantly go with first spelling suggestion
     :nnoremap <Leader>s a<C-X>s<Esc> 
 
+    " put :b whenever I list buffers (I always ls before switching...)
+    :nnoremap :ls :ls<cr>:b
+
     " search and replace word under cursor
     autocmd BufNewFile,BufRead * :nnoremap <Leader>* :%s/\<<C-r><C-w>\>/
 
@@ -123,49 +148,59 @@ augroup general
     autocmd BufNewFile,BufRead * nnoremap gI g0i
     autocmd BufNewFile,BufRead * nnoremap gA g$i
 
-    " Switching between buffers
-    autocmd BufNewFile,BufRead * :nnoremap <Tab> :bnext!<CR>
-    autocmd BufNewFile,BufRead * :nnoremap <S-Tab> :bprevious!<CR>
-
     " reminder not to use arrows in insert mode
     autocmd BufNewFile,BufRead * :inoremap <Left> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
     autocmd BufNewFile,BufRead * :inoremap <Right> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
     autocmd BufNewFile,BufRead * :inoremap <Up> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
     autocmd BufNewFile,BufRead * :inoremap <Down> <esc>mm :echo "Arrows are stupid. Use normal mode to move."<cr>`m
-    "-----------------------------------------------------------------------------
 
-    "----abbreviations------------------------------------------------------------
+    " abbreviations
     autocmd BufNewFile,BufRead * iabbrev keybaord keyboard
     autocmd BufNewFile,BufRead * iabbrev @g bennettmatt4@gmail.com
     autocmd BufNewFile,BufRead * iabbrev @u matthew.bennett@uclouvain.be
 augroup END
+"}}}
 "-----------------------------------------------------------------------------
 
 "---- file specific settings -------------------------------------------------
-" remove trailing whitespace and perform auto indent 
+"{{{
+augroup filetype_vim 
+    autocmd!
+   autocmd FileType vim setlocal foldmethod=marker
+augroup END
+"}}}
+"{{{
 augroup tidy_code
     autocmd!
+    " remove trailing whitespace and perform auto indent 
     autocmd BufWritePre *.py,*.m :call Preserve("%s/\\s\\+$//e")
     autocmd BufWritePre *.m :call Preserve("normal! gg=G")
 augroup END 
-
+"}}}
+"{{{
 augroup python
     autocmd!
-    autocmd BufNewFile,BufRead *.py " apparently this will only apply to .py files
-        \ set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
-        \ let python_highlight_all=1 " enable all Python syntax highlighting features
+    autocmd BufNewFile,BufRead *.py set fileformat=unix " avoid conversion issues when checking into GitHub and/or sharing with other users.
+    autocmd BufNewFile,BufRead *.py let python_highlight_all=1 " enable all Python syntax highlighting features
+    autocmd BufNewFile,BufRead *.py setlocal foldmethod=indent
 augroup END
-
+"}}}
+"{{{
 augroup matlab
     autocmd!
-    autocmd BufNewFile,BufRead *.m 
-        \ iabbrev <buffer> key keyboard
+    autocmd BufNewFile,BufRead *.m iabbrev <buffer> key keyboard
+    autocmd BufNewFile,BufRead *.m setlocal foldmethod=indent
+
+    " these next two are buggy:
+    " blank lines immediately after for/if
+
     " inside indent block
     autocmd BufNewFile,BufRead *.m onoremap ii :<c-u>execute "normal [-j^v]-kg_"<cr>
     " around indent block
     autocmd BufNewFile,BufRead *.m onoremap ai :<c-u>execute "normal [-V]="<cr>
 augroup END
-
+"}}}
+"{{{
 augroup markdown
     autocmd!
     autocmd BufNewFile,BufRead *.md setlocal wrap 
@@ -179,28 +214,35 @@ augroup markdown
     " around headed body:
     autocmd BufNewFile,BufRead *.md onoremap ahb :<c-u>execute "normal! ?^#\\+ \\w\\+.*$\rv/^#\\+ \\w\\+.*$\rk"<cr>
 augroup END
+"}}}
 "-----------------------------------------------------------------------------
 
 "---- cursor behaviour -------------------------------------------------------
+"{{{
 augroup cursor_behaviour
     autocmd!  
-    autocmd InsertEnter * set cul " highlight line when in insert mode
-    autocmd InsertLeave * set nocul " turn off above when leaving insert mode
+    autocmd InsertEnter * set cursorline " highlight line when in insert mode
+    autocmd InsertLeave * set nocursorline " turn off above when leaving insert mode
     " reset cursor on start:
     autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
-
+"}}}
+"{{{
 let &t_SI = "\e[5 q" " cursor blinking bar on insert mode
 let &t_EI = "\e[2 q" " cursor steady block on command mode
+"}}}
 "-----------------------------------------------------------------------------
 
 "---- commands ---------------------------------------------------------------
+"{{{
 " close buffer without closing window split
-command! Bd bp | sp | bn | bd
+command! Bd bprevious | split | bNext | bdelete
+"}}}
 "-----------------------------------------------------------------------------
 
 "==== PLUGIN CONFIGS =========================================================
 "---- vim-slime config -------------------------------------------------------
+"{{{
 " vim-slime lets me send visual selections from vim to a tmux pane of my choice. 
 " You can set the target manually using hitting C-c and then v.
 " ":i.j"    means the ith window, jth pane
@@ -213,9 +255,11 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{left-of
 let g:slime_dont_ask_default = 1
 " make F9 a shortcut for sending N lines to the tmux pane
 :nmap <F9> V<C-c><C-c>
+"}}}
 "-----------------------------------------------------------------------------
 
 "---- ultisnips config -------------------------------------------------------
+"{{{
 " Ultisnips trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"
 let g:UltiSnipsJumpForwardTrigger="<c-s>"
@@ -223,9 +267,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 " where ultisnips looks for snippets (I think you can add multiple items in the list)
 let g:UltiSnipsSnippetDirectories=["/home/mattb/.vim/ultisnips"]
+"}}}
 "-----------------------------------------------------------------------------
 
 "---- YouCompleteMe config ---------------------------------------------------
+"{{{
 " YouCompleteMe has a few filetypes that it doesn't work on by default (no
 " idea why). I removed markdown from this list and it seems to work just fine.
 let g:ycm_filetype_blacklist = {
@@ -240,11 +286,13 @@ let g:ycm_filetype_blacklist = {
       \ 'leaderf': 1,
       \ 'mail': 1
       \}
+"}}}
 "-----------------------------------------------------------------------------
 "=============================================================================
 
 "==== functions ==============================================================
 "---- restore cursor postition -----------------------------------------------
+"{{{
 " run a command, but put the cursor back when it's done
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
@@ -257,9 +305,11 @@ function! Preserve(command)
   let @/=_s
   call cursor(l, c)
 endfunction 
+"}}}
 "-----------------------------------------------------------------------------
 
 "---- copy matches to register -----------------------------------------------
+"{{{
 " copies only the text that matches search hits. Use with :CopyMatches x 
 " where x is any register (supplying no x copies to clipboard
 function! CopyMatches(reg)
@@ -269,6 +319,7 @@ function! CopyMatches(reg)
   execute 'let @'.reg.' = join(hits, "\n") . "\n"'
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
+"}}}
 "-----------------------------------------------------------------------------
 "=============================================================================
 
