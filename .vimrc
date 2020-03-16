@@ -1,3 +1,14 @@
+"---- things I would like ----------------------------------------------------
+"{{{
+" - when pasting a line, have it match the indent level of the first
+" non-whitespace line above
+" - replace word under the cursor with work in register
+" - matlab folds to use 'function', 'for', 'if', 'while' and go to 'end'
+" - format matlab scripts (blank lines etc.) on saving
+" - automatic folding for markdown sections
+"}}}
+"-----------------------------------------------------------------------------
+
 "---- required ---------------------------------------------------------------
 "{{{
 set nocompatible " don't try to be compatible with Vi
@@ -31,7 +42,7 @@ set ignorecase " ...searches with capital characters are case sensitive.
 set spell spelllang=en
 set nospell
 set lazyredraw " don't redraw screen during macros (let them complete faster)
-set foldlevelstart=0 " when opening new files, start with all folds closed
+set foldlevelstart=1 " when opening new files, start with only top folds open
 set cc=80 "show vertical bar at 80 columns
 set t_Co=256 " use full colours
 syntax enable " highlight special words to aid readability
@@ -126,6 +137,9 @@ augroup general
     " instantly go with first spelling suggestion
     :nnoremap <Leader>s a<C-X>s<Esc> 
 
+    " put :b whenever I list buffers (I always ls before switching...)
+    :nnoremap :ls :ls<cr>:b
+
     " search and replace word under cursor
     autocmd BufNewFile,BufRead * :nnoremap <Leader>* :%s/\<<C-r><C-w>\>/
 
@@ -175,11 +189,15 @@ augroup END
 augroup matlab
     autocmd!
     autocmd BufNewFile,BufRead *.m iabbrev <buffer> key keyboard
+    autocmd BufNewFile,BufRead *.m setlocal foldmethod=indent
+
+    " these next two are buggy:
+    " blank lines immediately after for/if
+
     " inside indent block
     autocmd BufNewFile,BufRead *.m onoremap ii :<c-u>execute "normal [-j^v]-kg_"<cr>
     " around indent block
     autocmd BufNewFile,BufRead *.m onoremap ai :<c-u>execute "normal [-V]="<cr>
-    autocmd BufNewFile,BufRead *.m setlocal foldmethod=indent
 augroup END
 "}}}
 "{{{
@@ -218,7 +236,7 @@ let &t_EI = "\e[2 q" " cursor steady block on command mode
 "---- commands ---------------------------------------------------------------
 "{{{
 " close buffer without closing window split
-command! Bd bprevious | spilt | bNext | bdelete
+command! Bd bprevious | split | bNext | bdelete
 "}}}
 "-----------------------------------------------------------------------------
 
