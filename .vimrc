@@ -137,9 +137,6 @@ augroup general
     " instantly go with first spelling suggestion
     :nnoremap <Leader>s a<C-X>s<Esc> 
 
-    " put :b whenever I list buffers (I always ls before switching...)
-    :nnoremap :ls :ls<cr>:b
-
     " search and replace word under cursor
     autocmd BufNewFile,BufRead * :nnoremap <Leader>* :%s/\<<C-r><C-w>\>/
 
@@ -167,6 +164,8 @@ augroup END
 augroup filetype_vim 
     autocmd!
    autocmd FileType vim setlocal foldmethod=marker
+   " this next one isn't working for some reason...
+   autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 "}}}
 "{{{

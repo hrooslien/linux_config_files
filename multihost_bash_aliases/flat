@@ -1,5 +1,9 @@
 alias sd='shutdown'
 
+# ssh to work stations
+alias sshpony='ssh -X mattb@130.104.83.192'
+alias sshcism='ssh mbennett@storage.cism.ucl.ac.be'
+
 alias skype='skypeforlinux &'
 
 # display the ufc video I am watching/should watch next
