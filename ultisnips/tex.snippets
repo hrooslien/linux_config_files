@@ -3,3 +3,26 @@ snippet \b "\begin"
 $0
 \end{$1}
 endsnippet
+
+snippet lat "article template"
+\documentclass{${1:article}}
+
+\usepackage{graphicx}
+
+\title{$2}
+\author{Matthew Bennett}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \listoffigures
+    \newpage
+
+    \section{$3}
+    $0
+
+    \newpage
+    \bibliography{mybilbiograph}
+    \bibliographystyle{apalike}
+\end{document}
+endsnippet
