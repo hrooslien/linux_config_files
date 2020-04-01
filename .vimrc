@@ -6,6 +6,8 @@
 " - matlab folds to use 'function', 'for', 'if', 'while' and go to 'end'
 " - format matlab scripts (blank lines etc.) on saving
 " - automatic folding for markdown sections
+" - status bar to display last search term 
+" - paste one space later than cursor (even if we're on at the end of the line)
 "}}}
 "-----------------------------------------------------------------------------
 

@@ -1,7 +1,6 @@
 #! bin/bash
 
 # video editing functions
-
 vidspeed () {
     if [[ $# -ne 2 ]] ; then
         echo 'please supply a speed and a video file'
@@ -20,7 +19,6 @@ vidcompile () {
         echo 'name of output video not supplied'
         return 1
     fi
-
     ls *mp4 | cut -f 1 | awk '{printf "file '\''%s'\''\n", $0}' > input_vids
     ffmpeg -f concat -i input_vids -c copy $1.mp4
     mkdir -p completed/$1/components
@@ -44,6 +42,19 @@ vidrmlast () {
 
 vidplaylast () {
     vlc $(ls *mp4 | cut -f1 | tail -n1) &
+}
+
+vidduration () {
+    total_duration=0
+    for file in $(ls *.mp4)
+    do
+        # let duration=$(bc -l <<<"$(ffmpeg -i $file 2>&1 | grep Duration | cut -d ' ' -f4 | sed s/,// | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }' | cut -d. f1)+$duration")
+        duration=$(ffmpeg -i $file 2>&1 | grep Duration | cut -d ' ' -f4 | sed s/,// | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }')
+
+        total_duration=$(bc <<< "$total_duration + $duration")
+
+    done
+    echo $(bc <<< "$total_duration / 60")
 }
 
 # close stupid bluetooth error window
