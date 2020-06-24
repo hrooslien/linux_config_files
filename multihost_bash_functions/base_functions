@@ -32,3 +32,10 @@ rename 's/\._/_[/g' *.pdf
 rename 's/\)\./)]\./g' *.pdf
 rename 's/_&//g' *.pdf
 }
+
+cleanname () {
+rename 'y/A-Z/a-z/' *.pdf
+rename 's/ /_/g' *.pdf
+rename "s/'//g" *.pdf
+rename 's/,//g' *.pdf
+}
