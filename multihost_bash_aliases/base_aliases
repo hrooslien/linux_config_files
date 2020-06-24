@@ -52,3 +52,6 @@ alias clip='xclip -selection clipboard'
 
 # set night light temp (default=4000)
 alias night='gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'
+
+alias sshpony='ssh mattb@130.104.83.107'
+alias sshponyx='ssh -X mattb@130.104.83.107'

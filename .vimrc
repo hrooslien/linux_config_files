@@ -2,10 +2,12 @@
 "{{{
 " - when pasting a line, have it match the indent level of the first
 " non-whitespace line above
-" - replace word under the cursor with work in register
+" - replace word under the cursor with word in register
 " - matlab folds to use 'function', 'for', 'if', 'while' and go to 'end'
 " - format matlab scripts (blank lines etc.) on saving
 " - automatic folding for markdown sections
+" - status bar to display last search term 
+" - paste one space later than cursor (even if we're on at the end of the line)
 "}}}
 "-----------------------------------------------------------------------------
 
@@ -70,12 +72,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'jnurmine/Zenburn'
+" Plugin 'jnurmine/Zenburn'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jeetsukumaran/vim-indentwise'
-Plugin 'python-rope/ropevim'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-scripts/MatlabFilesEdition'
 Plugin 'jpalardy/vim-slime'
@@ -137,11 +137,13 @@ augroup general
     " instantly go with first spelling suggestion
     :nnoremap <Leader>s a<C-X>s<Esc> 
 
-    " put :b whenever I list buffers (I always ls before switching...)
-    :nnoremap :ls :ls<cr>:b
-
     " search and replace word under cursor
     autocmd BufNewFile,BufRead * :nnoremap <Leader>* :%s/\<<C-r><C-w>\>/
+
+    " gq until a line beggining with \ 
+    " I figured out the macro (that's everything after the :), but I've
+    " forgotten how to do the remap commands
+    " autocmd BufNewFile,BufRead * :nnoremap <Leader>g :^ms/\\k$me`sgq`en:noh
 
     " let g modify insert/append to work on visual  lines, in the same way as it
     " modifies motions like 0 and $
@@ -167,6 +169,8 @@ augroup END
 augroup filetype_vim 
     autocmd!
    autocmd FileType vim setlocal foldmethod=marker
+   " this next one isn't working for some reason...
+   autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 "}}}
 "{{{
