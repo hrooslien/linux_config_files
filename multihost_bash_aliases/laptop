@@ -1,9 +1,0 @@
-alias sd='shutdown'
-
-alias sshcism='ssh mbennett@storage.cism.ucl.ac.be' 
-alias sshoffice='ssh mattb@130.104.83.106'
-
-alias skype='skypeforlinux &'
-
-# launch utorrent server
-alias ut='utserver -settingspath /usr/local/utorrent-server-alpha-v3_3/ &'

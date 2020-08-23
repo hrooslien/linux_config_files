@@ -38,7 +38,7 @@ alias gitlog="git log --graph --decorate --format=format:'%C(bold blue)%h%C(rese
 # open applications with & to allow me to continue working in the terminal
 alias spyder='spyder &'
 alias itksnap='itksnap &'
-alias matlab='matlab &'
+alias matlab='/usr/local/MATLAB/R2020a/bin/matlab &'
 alias matlabnd='/usr/local/MATLAB/R2019b/bin/matlab -nodesktop -nosplash'
 alias vmatlabnd='rlwrap -a matlab -nodesktop -nosplash'
 #

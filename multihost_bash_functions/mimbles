@@ -58,4 +58,4 @@ vidduration () {
 }
 
 # close stupid bluetooth error window
-wmctrl -ic 0x01c0000d
+# wmctrl -ic 0x01c0000d
